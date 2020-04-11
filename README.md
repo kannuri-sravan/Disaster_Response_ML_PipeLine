@@ -1,6 +1,42 @@
 # Disaster Response ML PipeLine
 Disaster Response Machine Learning Binary Classification PipeLine
 
+## Libraries used
+1. import nltk
+1. nltk.download(['punkt', 'wordnet'])
+1. import pandas as pd
+1. from sqlalchemy import create_engine
+1. from nltk.tokenize import word_tokenize
+1. from nltk.stem import WordNetLemmatizer
+1. import re
+1. from sklearn.model_selection import train_test_split
+1. import numpy as np
+1. from sklearn.datasets import make_multilabel_classification
+1. from sklearn.multioutput import MultiOutputClassifier
+1. from sklearn.neighbors import KNeighborsClassifier
+1. from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
+1. from sklearn.pipeline import Pipeline
+1. from sklearn.metrics import precision_recall_fscore_support
+1. from sklearn.metrics import classification_report
+1. from sklearn.model_selection import GridSearchCV
+1. from sklearn.metrics import confusion_matrix
+1. from sklearn.externals import joblib
+2. from sqlalchemy import create_engine
+
+## Web Application Installation steps
+
+1. Run the following commands in the project's root directory to set up your database and model.
+
+    - To run ETL pipeline that cleans data and stores in database
+        `python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db`
+    - To run ML pipeline that trains classifier and saves
+        `python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl`
+
+2. Run the following command in the app's directory to run your web app.
+    `python run.py`
+
+3. Go to http://0.0.0.0:3001/
+
 ## I. Definition
 Digitalization and the rise of social media have led disaster management to the insight that modern information technology will have to play a key role in dealing with a crisis. 
 
@@ -115,6 +151,8 @@ Renamed columns of categories with new column names.
 * After applying above techniques, the final data looks like below.
 
 ![](images/final_categories.png "Categories Data")
+
+Loaded cleaned data to sqlite database table which was used to build ML pipeline 
 
 ### Implementation
 #### Challenges : 
