@@ -53,7 +53,7 @@ def build_model():
 def evaluate_model(model, X_test, Y_test, category_names):
     y_pred = model.predict(X_test)
     for i,colName in enumerate(category_names):
-        print(colName, classification_report(Y_test[i], y_pred[i], target_names=['0','1']))
+        print(colName, classification_report(Y_test[i], y_pred[i]))
     pass
 
 
